@@ -51,7 +51,7 @@ public class ConverterTest {
     assertEquals("CMLXXX", converter.integerToRomanNumeral(980));
     assertEquals("MXC", converter.integerToRomanNumeral(1090));
     assertEquals("MMC", converter.integerToRomanNumeral(2100));
-    assertEquals("MMDXCVII", converter.integerToRomanNumeral(2597));
+    assertEquals("MMCDXCVII", converter.integerToRomanNumeral(2497));
     assertEquals("MMM", converter.integerToRomanNumeral(3000));
   }
 
@@ -67,6 +67,32 @@ public class ConverterTest {
     assertEquals(8, converter.romanNumeralToInteger("VIII"));
     assertEquals(9, converter.romanNumeralToInteger("IX"));
     assertEquals(10, converter.romanNumeralToInteger("X"));
+    assertEquals(14, converter.romanNumeralToInteger("XIV"));
+    assertEquals(15, converter.romanNumeralToInteger("XV"));
+    assertEquals(19, converter.romanNumeralToInteger("XIX"));
+    assertEquals(20, converter.romanNumeralToInteger("XX"));
+    assertEquals(24, converter.romanNumeralToInteger("XXIV"));
+    assertEquals(25, converter.romanNumeralToInteger("XXV"));
+    assertEquals(31, converter.romanNumeralToInteger("XXXI"));
+    assertEquals(42, converter.romanNumeralToInteger("XLII"));
+    assertEquals(53, converter.romanNumeralToInteger("LIII"));
+    assertEquals(64, converter.romanNumeralToInteger("LXIV"));
+    assertEquals(75, converter.romanNumeralToInteger("LXXV"));
+    assertEquals(86, converter.romanNumeralToInteger("LXXXVI"));
+    assertEquals(99, converter.romanNumeralToInteger("XCIX"));
+    assertEquals(100, converter.romanNumeralToInteger("C"));
+    assertEquals(210, converter.romanNumeralToInteger("CCX"));
+    assertEquals(320, converter.romanNumeralToInteger("CCCXX"));
+    assertEquals(430, converter.romanNumeralToInteger("CDXXX"));
+    assertEquals(540, converter.romanNumeralToInteger("DXL"));
+    assertEquals(650, converter.romanNumeralToInteger("DCL"));
+    assertEquals(760, converter.romanNumeralToInteger("DCCLX"));
+    assertEquals(870, converter.romanNumeralToInteger("DCCCLXX"));
+    assertEquals(980, converter.romanNumeralToInteger("CMLXXX"));
+    assertEquals(1090, converter.romanNumeralToInteger("MXC"));
+    assertEquals(2100, converter.romanNumeralToInteger("MMC"));
+    assertEquals(2497, converter.romanNumeralToInteger("MMCDXCVII"));
+    assertEquals(3000, converter.romanNumeralToInteger("MMM"));
   }
 
   @Test(expected = ValueNotSupportedException.class)
