@@ -1,10 +1,12 @@
 package com.daniinyan.converter.service;
 
 import com.daniinyan.converter.exception.ValueNotSupportedException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Converter {
 
@@ -52,21 +54,32 @@ public class Converter {
   }
 
   public int romanNumeralToInteger(String romanNumeral) {
+    List<Character> letters = new ArrayList<>();
+    for (Character letter : romanNumeral.toCharArray()) {
+      letters.add(letter);
+    }
+
+    List<Integer> convertedValues = letters.stream()
+        .filter(this::isValidRomanNumeral)
+        .map(validRomanNumerals::get)
+        .collect(Collectors.toList());
+
     int result = 0;
     int lastValue = 0;
-    for (Character letter : romanNumeral.toCharArray()) {
-      int actualValue = validRomanNumerals.get(letter);
-
-      if (actualValue > lastValue) {
-        result += (actualValue - lastValue) - lastValue;
-      } else {
-        result += actualValue;
-      }
-
-      lastValue = actualValue;
+    for (Integer value : convertedValues) {
+      result += value > lastValue ? (value - lastValue) - lastValue : value;
+      lastValue = value;
     }
 
     return result;
+  }
+
+  private boolean isValidRomanNumeral(Character letter) {
+    if (validRomanNumerals.containsKey(letter)) {
+      return true;
+    }
+
+    throw new ValueNotSupportedException("Invalid letter: " + letter);
   }
 
   private String addRomanNumerals(int number, List<String> romanNumeralsNeeded) {

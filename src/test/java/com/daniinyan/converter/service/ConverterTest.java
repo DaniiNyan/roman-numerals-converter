@@ -113,4 +113,14 @@ public class ConverterTest {
     converter.integerToRomanNumeral(-2);
   }
 
+  @Test(expected = ValueNotSupportedException.class)
+  public void shouldThrowExceptionWhenGivenInvalidRomanNumeral() {
+    converter.romanNumeralToInteger("Z");
+  }
+
+  @Test(expected = ValueNotSupportedException.class)
+  public void shouldThrowExceptionWhenGivenInvalidLetter() {
+    converter.romanNumeralToInteger("IXZ");
+  }
+
 }
