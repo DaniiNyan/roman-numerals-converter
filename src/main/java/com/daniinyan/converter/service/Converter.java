@@ -2,15 +2,29 @@ package com.daniinyan.converter.service;
 
 import com.daniinyan.converter.exception.ValueNotSupportedException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Converter {
+
+  private final Map<Character, Integer> validRomanNumerals = new HashMap<Character, Integer>() {
+    {
+      put('I', 1);
+      put('V', 5);
+      put('X', 10);
+      put('L', 50);
+      put('C', 100);
+      put('D', 500);
+      put('M', 1000);
+    }
+  };
 
   private final List<String> numeralsToConvertFirstDecimalPlace = Arrays.asList("I", "IV", "V", "IX", "X");
   private final List<String> numeralsToConvertTens = Arrays.asList("X", "XL", "L", "XC", "C");
   private final List<String> numeralsToConvertHundreds = Arrays.asList("C", "CD", "D", "CM", "M");
 
-  public String toRomanNumeral(int number) {
+  public String integerToRomanNumeral(int number) {
     if (number > 3000) {
       throw new ValueNotSupportedException("Can't convert numbers greater than 3000.");
     }
@@ -35,6 +49,24 @@ public class Converter {
     }
 
     return result.toString();
+  }
+
+  public int romanNumeralToInteger(String romanNumeral) {
+    int result = 0;
+    int lastValue = 0;
+    for (Character letter : romanNumeral.toCharArray()) {
+      int actualValue = validRomanNumerals.get(letter);
+
+      if (actualValue > lastValue) {
+        result += (actualValue - lastValue) - lastValue;
+      } else {
+        result += actualValue;
+      }
+
+      lastValue = actualValue;
+    }
+
+    return result;
   }
 
   private String addRomanNumerals(int number, List<String> romanNumeralsNeeded) {
