@@ -26,6 +26,32 @@ public class ConverterTest {
     assertEquals("VII", converter.toRomanNumeral(7));
     assertEquals("VIII", converter.toRomanNumeral(8));
     assertEquals("IX", converter.toRomanNumeral(9));
+    assertEquals("X", converter.toRomanNumeral(10));
+    assertEquals("XIV", converter.toRomanNumeral(14));
+    assertEquals("XV", converter.toRomanNumeral(15));
+    assertEquals("XIX", converter.toRomanNumeral(19));
+    assertEquals("XX", converter.toRomanNumeral(20));
+    assertEquals("XXIV", converter.toRomanNumeral(24));
+    assertEquals("XXV", converter.toRomanNumeral(25));
+    assertEquals("XXXI", converter.toRomanNumeral(31));
+    assertEquals("XLII", converter.toRomanNumeral(42));
+    assertEquals("LIII", converter.toRomanNumeral(53));
+    assertEquals("LXIV", converter.toRomanNumeral(64));
+    assertEquals("LXXV", converter.toRomanNumeral(75));
+    assertEquals("LXXXVI", converter.toRomanNumeral(86));
+    assertEquals("XCIX", converter.toRomanNumeral(99));
+    assertEquals("C", converter.toRomanNumeral(100));
+    assertEquals("CCX", converter.toRomanNumeral(210));
+    assertEquals("CCCXX", converter.toRomanNumeral(320));
+    assertEquals("CDXXX", converter.toRomanNumeral(430));
+    assertEquals("DXL", converter.toRomanNumeral(540));
+    assertEquals("DCL", converter.toRomanNumeral(650));
+    assertEquals("DCCLX", converter.toRomanNumeral(760));
+    assertEquals("DCCCLXX", converter.toRomanNumeral(870));
+    assertEquals("CMLXXX", converter.toRomanNumeral(980));
+    assertEquals("MXC", converter.toRomanNumeral(1090));
+    assertEquals("MMC", converter.toRomanNumeral(2100));
+    assertEquals("MMDXCVII", converter.toRomanNumeral(2597));
   }
 
   @Test(expected = ValueNotSupportedException.class)
