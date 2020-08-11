@@ -52,11 +52,25 @@ public class ConverterTest {
     assertEquals("MXC", converter.toRomanNumeral(1090));
     assertEquals("MMC", converter.toRomanNumeral(2100));
     assertEquals("MMDXCVII", converter.toRomanNumeral(2597));
+    assertEquals("MMM", converter.toRomanNumeral(3000));
   }
 
   @Test(expected = ValueNotSupportedException.class)
   public void shouldThrowExceptionWhenGivenNumberGreaterThan3000() {
     converter.toRomanNumeral(3001);
+    converter.toRomanNumeral(0);
+    converter.toRomanNumeral(-2);
+  }
+
+  @Test(expected = ValueNotSupportedException.class)
+  public void shouldThrowExceptionWhenGivenNumberLesserThan1() {
+    converter.toRomanNumeral(0);
+
+  }
+
+  @Test(expected = ValueNotSupportedException.class)
+  public void shouldThrowExceptionWhenGivenNegativeNumber() {
+    converter.toRomanNumeral(-2);
   }
 
 }
