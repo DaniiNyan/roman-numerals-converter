@@ -22,9 +22,9 @@ public class Converter {
     }
   };
 
-  private final List<String> numeralsToConvertFirstDecimalPlace = Arrays.asList("I", "IV", "V", "IX", "X");
-  private final List<String> numeralsToConvertTens = Arrays.asList("X", "XL", "L", "XC", "C");
-  private final List<String> numeralsToConvertHundreds = Arrays.asList("C", "CD", "D", "CM", "M");
+  private final List<String> firstDecimalPlaceNumerals = Arrays.asList("I", "IV", "V", "IX", "X");
+  private final List<String> tensNumerals = Arrays.asList("X", "XL", "L", "XC", "C");
+  private final List<String> hundredsNumerals = Arrays.asList("C", "CD", "D", "CM", "M");
 
   public String integerToRomanNumeral(int number) {
     if (number > 3000) {
@@ -40,14 +40,14 @@ public class Converter {
     result.append(addRomanNumerals(numberOfThousands, "M"));
 
     int numberOfHundreds = number / 100 % 10;
-    result.append(addRomanNumerals(numberOfHundreds, numeralsToConvertHundreds));
+    result.append(addRomanNumerals(numberOfHundreds, hundredsNumerals));
 
     int numberOfTens = number / 10 % 10;
-    result.append(addRomanNumerals(numberOfTens, numeralsToConvertTens));
+    result.append(addRomanNumerals(numberOfTens, tensNumerals));
 
     int firstDecimalPlace = number % 10;
     if (firstDecimalPlace > 0) {
-      result.append(addRomanNumerals(firstDecimalPlace, numeralsToConvertFirstDecimalPlace));
+      result.append(addRomanNumerals(firstDecimalPlace, firstDecimalPlaceNumerals));
     }
 
     return result.toString();
@@ -72,14 +72,6 @@ public class Converter {
     }
 
     return result;
-  }
-
-  private boolean isValidRomanNumeral(Character letter) {
-    if (validRomanNumerals.containsKey(letter)) {
-      return true;
-    }
-
-    throw new ValueNotSupportedException("Invalid letter: " + letter);
   }
 
   private String addRomanNumerals(int number, List<String> romanNumeralsNeeded) {
@@ -109,5 +101,12 @@ public class Converter {
       result.append(letter);
     }
     return result.toString();
+  }
+
+  private boolean isValidRomanNumeral(Character letter) {
+    if (validRomanNumerals.containsKey(letter)) {
+      return true;
+    }
+    throw new ValueNotSupportedException("Invalid letter: " + letter);
   }
 }
