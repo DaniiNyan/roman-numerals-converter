@@ -98,14 +98,11 @@ public class ConverterTest {
   @Test(expected = ValueNotSupportedException.class)
   public void shouldThrowExceptionWhenGivenNumberGreaterThan3000() {
     converter.integerToRomanNumeral(3001);
-    converter.integerToRomanNumeral(0);
-    converter.integerToRomanNumeral(-2);
   }
 
   @Test(expected = ValueNotSupportedException.class)
   public void shouldThrowExceptionWhenGivenNumberLesserThan1() {
     converter.integerToRomanNumeral(0);
-
   }
 
   @Test(expected = ValueNotSupportedException.class)
