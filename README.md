@@ -9,13 +9,13 @@
 #### Structure
 In this project, I choose to do both conversions inside the same Converter class.
 There's one public method for each conversion. The Menu class operate a Converter instance
-and is responsible to show interact messages to use it in command line.     
+and is responsible to show interact messages to be used in command line.     
 
 #### Some tech explanations
 Today this converter uses both a HashMap and a few Lists to do its conversions.
 Initially I tried to use the same HashMap to all operations but this approach turned the code
 a little hard to read then I choose to have both HashMap and Lists in favor of a code
-more easy to understand. If I could do something to improve this code, I would change this 
+easier to understand. If I could do something to improve this code, I would change this 
 approach and find a way to use the same variable without decreasing the code readability.
 
 ## Getting Started
